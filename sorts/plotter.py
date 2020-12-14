@@ -3,15 +3,16 @@ import random
 
 from bubble_sort import bubble_sort
 from merge_sort import merge_sort_bottom_up
+from insertion_sort import insertion_sort
 
 # array to sort
-n = 50
+n = 20
 numbers = [x for x in range(1, n + 1)]
 labels = numbers.copy()
 random.shuffle(numbers)
 
 # sort plots
-sorts = [bubble_sort, merge_sort_bottom_up]
+sorts = [bubble_sort, merge_sort_bottom_up, insertion_sort]
 sorts_gen = [x(numbers.copy()) for x in sorts]
 
 n_cols = len(sorts) // 2 + 1
