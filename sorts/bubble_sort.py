@@ -1,3 +1,11 @@
+'''
+Worst-case performance	О(n2) comparisons and swaps
+Best-case performance	O(n) comparisons, O(1) swaps
+Average performance	О(n2) comparisons and swaps
+Worst-case space complexity	О(1) total, O(1) auxiliary
+'''
+
+
 def bubble_sort(arr):
     swapped = True
     ranged = len(arr)

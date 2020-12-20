@@ -4,6 +4,7 @@ import random
 from bubble_sort import bubble_sort
 from merge_sort import merge_sort_bottom_up
 from insertion_sort import insertion_sort
+from selection_sort import selection_sort
 
 # array to sort
 n = 20
@@ -12,7 +13,7 @@ labels = numbers.copy()
 random.shuffle(numbers)
 
 # sort plots
-sorts = [bubble_sort, merge_sort_bottom_up, insertion_sort]
+sorts = [bubble_sort, merge_sort_bottom_up, insertion_sort, selection_sort]
 sorts_gen = [x(numbers.copy()) for x in sorts]
 
 n_cols = len(sorts) // 2 + 1
@@ -20,7 +21,6 @@ n_rows = len(sorts) // 2 + 1
 
 fig, subplots = plt.subplots(n_cols, n_rows, figsize=(10.24, 7.68))
 axis = []
-print(subplots.flatten())
 for ax in subplots.flatten():
     axis.append(ax)
 
@@ -31,6 +31,7 @@ def plot_sort(arr, current_change, axis, title):
     barlist = axis.bar(height=arr, x=labels, width=0.8)
     axis.set_ylim([0, n])
     axis.set_title(title)
+    axis.axis('off')
     barlist[current_change].set_color('r')
     plt.draw()
 

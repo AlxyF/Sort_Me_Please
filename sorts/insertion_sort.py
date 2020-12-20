@@ -15,7 +15,10 @@ def insertion_sort(arr):
         while j >= 0 and arr[j] > x:
             arr[j + 1] = arr[j]
             j -= 1
-            yield arr, j
-
+            if i < len(arr) - 1:
+                yield arr, j
+           
         arr[j + 1] = x
         i += 1
+
+    yield arr, j
