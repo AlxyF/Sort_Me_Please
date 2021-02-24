@@ -1,3 +1,5 @@
+
+
 def merge_sort_bottom_up(arr): 
     def merge(arr, arr_c, left, mid, right):
         i = left

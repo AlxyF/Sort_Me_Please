@@ -1,3 +1,4 @@
+import sys
 import matplotlib.pyplot as plt
 import random
 
@@ -5,26 +6,11 @@ from bubble_sort import bubble_sort
 from merge_sort import merge_sort_bottom_up
 from insertion_sort import insertion_sort
 from selection_sort import selection_sort
+from counting_sort import counting_sort
 
-# array to sort
-n = 20
-numbers = [x for x in range(1, n + 1)]
-labels = numbers.copy()
-random.shuffle(numbers)
 
-# sort plots
-sorts = [bubble_sort, merge_sort_bottom_up, insertion_sort, selection_sort]
-sorts_gen = [x(numbers.copy()) for x in sorts]
-
-n_cols = len(sorts) // 2 + 1
-n_rows = len(sorts) // 2 + 1
-
-fig, subplots = plt.subplots(n_cols, n_rows, figsize=(10.24, 7.68))
-axis = []
-for ax in subplots.flatten():
-    axis.append(ax)
-
-pause = 0.001
+def on_close(event):
+    sys.exit()
 
 
 def plot_sort(arr, current_change, axis, title):
@@ -46,6 +32,30 @@ def multiP():
             except StopIteration:
                 pass
         plt.pause(pause)
+
+# array to sort
+n = 20
+numbers = [x for x in range(1, n + 1)]
+labels = numbers.copy()
+random.shuffle(numbers)
+
+# sort plots
+sorts = [bubble_sort, merge_sort_bottom_up, insertion_sort, selection_sort,
+        counting_sort]
+
+sorts_gen = [x(numbers.copy()) for x in sorts]
+
+n_cols = len(sorts) // 2 + 1
+n_rows = len(sorts) // 2 + 1
+
+fig, subplots = plt.subplots(n_cols, n_rows, figsize=(10.24, 7.68))
+fig.canvas.mpl_connect('close_event', on_close)
+
+axis = []
+for ax in subplots.flatten():
+    axis.append(ax)
+
+pause = 0.001
 
 
 if __name__ == "__main__":
